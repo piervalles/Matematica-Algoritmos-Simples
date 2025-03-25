@@ -38,8 +38,8 @@ public class Intervalos {
                         System.out.println("Las raices de la función son:");
                         if ((a == Math.floor(a)) && (b == Math.floor(b))) {
                             // Es un número entero (sin decimales significativos)
-                            System.out.println("x1 ="+(int)a);
-                            System.out.println("x2 ="+(int)b);
+                            System.out.println("x1 = "+(int)a);
+                            System.out.println("x2 = "+(int)b);
                         } else {
                             // Tiene decimales significativos
                             System.out.println("x1 = "+a);
