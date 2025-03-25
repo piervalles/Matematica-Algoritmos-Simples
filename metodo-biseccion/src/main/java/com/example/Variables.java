@@ -21,7 +21,7 @@ public class Variables {
         System.out.println("Ingrese \'b\'");
         this.b = escaner.nextDouble();
 
-        //escaner.close();
+        escaner.close();
     }
 
     public String getFxString() {return fxString;}
