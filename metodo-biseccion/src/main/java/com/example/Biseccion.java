@@ -42,7 +42,7 @@ public class Biseccion {
                 int i=0;
                 final int imax=100000;
 
-                while (Math.abs(fc)>1e-15 && i<imax) {
+                while (Math.abs(fc)>1e-20 && i<imax) {
                     i++;
 
                     if (fa*fc>0) {
