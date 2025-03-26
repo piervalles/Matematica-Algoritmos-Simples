@@ -3,19 +3,19 @@ import com.ezylang.evalex.Expression;
 import com.ezylang.evalex.data.EvaluationValue;
 
 public class Intervalos {
-    private double a;
-    private double b;
-    private String fxString;
+    private Variables datos;
 
     public Intervalos (Variables datos){
-        this.a = datos.getA();
-        this.b = datos.getB();
-        this.fxString = datos.getFxString();
+        this.datos=datos;
     }
 
     public boolean  reglaIntervalos (){
         Double fa=null;
         Double fb=null;
+
+        String fxString = datos.getFxString();
+        double a = datos.getA();
+        double b = datos.getB();
 
         try {
             Expression expression = new Expression(fxString);

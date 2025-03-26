@@ -2,18 +2,18 @@ package com.example;
 import com.ezylang.evalex.Expression;
 import com.ezylang.evalex.data.EvaluationValue;
 
-public class Biseccion {
-    private String fxString;
-    private double a;
-    private double b;
+public class PruebaFalsa {
+    private Variables datos;
 
-    public Biseccion(Variables datos){
-        this.a = datos.getA();
-        this.b = datos.getB(); 
-        this.fxString= datos.getFxString();
+    public PruebaFalsa(Variables datos){
+        this.datos = datos;
     }
 
-    public void biseccionCalculo(){
+    public void pruebaFalsaCalculo(){
+        String fxString = datos.getFxString();
+        double a = datos.getA();
+        double b = datos.getB();
+
         try {
             Expression expression = new Expression(fxString);
             EvaluationValue eFa = expression
@@ -33,10 +33,8 @@ public class Biseccion {
 
                 );
             } else {
-                double C = (a+b)/2;
-                EvaluationValue eFc = expression
-                    .with("x", C)
-                    .evaluate();  
+                double C = (a*fb-b*fa)/(fb-fa);
+                EvaluationValue eFc = expression.with("x", C).evaluate();  
                 double fc = eFc.getNumberValue().doubleValue();
 
                 int i=0;
@@ -51,7 +49,7 @@ public class Biseccion {
                         b=C;
                     }
 
-                    C = (a+b)/2;
+                    C = (a*fb-b*fa)/(fb-fa);
                     eFc = expression.with("x", C).evaluate();
                     fc = eFc.getNumberValue().doubleValue();
                 }

@@ -10,8 +10,8 @@ public class Main {
         Intervalos intervalos = new Intervalos(variables);
         if (intervalos.reglaIntervalos()) {
             // Solo si el intervalo es válido, ejecutamos Biseccion
-            Biseccion biseccion = new Biseccion(variables);
-            biseccion.biseccionCalculo();
+            PruebaFalsa pruebaFalsa = new PruebaFalsa(variables);
+            pruebaFalsa.pruebaFalsaCalculo();
         }
     }
 }
