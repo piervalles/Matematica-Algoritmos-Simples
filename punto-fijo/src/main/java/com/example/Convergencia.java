@@ -21,9 +21,7 @@ public class Convergencia {
         ExprEvaluator util = new ExprEvaluator();
         String derivada = util.eval("D(" + funcion + ", x)").toString();
 
-        System.out.println(derivada);
+        System.out.println("esta es la derivada  "+derivada);
         //return derivada;
     }
-
-
 }
