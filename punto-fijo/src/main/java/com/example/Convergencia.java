@@ -13,15 +13,12 @@ public class Convergencia {
         this.datos = datos;
     }
 
-    public void derivadaSimbolica(){
-        // Obtenemos la función desde los datos
+    private String derivadaSimbolica(){
         String funcion = datos.getGx();
 
         // Usamos Symja para realizar la derivada
         ExprEvaluator util = new ExprEvaluator();
         String derivada = util.eval("D(" + funcion + ", x)").toString();
-
-        System.out.println("esta es la derivada  "+derivada);
-        //return derivada;
+        return derivada;
     }
 }

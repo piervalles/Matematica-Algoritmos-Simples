@@ -5,8 +5,14 @@ public class Main {
         Datos datos = new Datos();
         datos.datosEntrada();
 
-        Convergencia convergencia = new Convergencia(datos);
-        convergencia.derivadaSimbolica();
+        Intervalos intervalos = new Intervalos(datos);
+        Bolzano bolzano = new Bolzano(datos);
+        
+        if(intervalos.reglaIntervalos()){
+            if (bolzano.bolzanoAplicaDecicion()) {
+                PuntoFijo puntoFijo = new PuntoFijo(datos);
+            }
+        }
+        
     }
 }
-
