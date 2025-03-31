@@ -18,6 +18,7 @@ public class Main {
 
                 BigDecimal puntoConvergencia = convergencia.getPuntoInicial();
                 puntoFijo.recibirPuntoConvergencia(puntoConvergencia);
+                puntoFijo.puntoFijoDesarrollo();
             }
         }
         

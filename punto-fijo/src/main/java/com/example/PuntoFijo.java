@@ -21,7 +21,7 @@ public class PuntoFijo {
         this.puntoConvergencia = puntoConvergencia;
     }
 
-    private void puntoFijoDesarrollo(){
+    public void puntoFijoDesarrollo(){
         BigDecimal  pc = puntoConvergencia;
         String gx = datos.getGx();
         String fx = datos.getFx();
