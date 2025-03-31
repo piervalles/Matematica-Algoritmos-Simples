@@ -1,12 +1,11 @@
 package com.example;
 
-import com.ezylang.evalex.EvaluationException;
+
 import com.ezylang.evalex.Expression;
 import com.ezylang.evalex.data.EvaluationValue;
-import com.ezylang.evalex.parser.ParseException;
 import java.math.BigDecimal;
-
-import org.checkerframework.checker.units.qual.A;
+//import com.ezylang.evalex.EvaluationException;
+//import com.ezylang.evalex.parser.ParseException;
 
 public class PuntoFijo {
     private Datos datos;
@@ -35,21 +34,16 @@ public class PuntoFijo {
             gPunto = evalGX.getNumberValue();
 
             while (pc.subtract(gPunto).abs().compareTo(new BigDecimal("1e-20")) > 0) {
-
-
                 i++;
                 if (i>imax) {
                     System.out.println("Se alcanzo el numero maximo de iteracciones");
                     return;
-                } else {
-                    
                 }
                 pc = gPunto;
                 evalGX = expression.with("x", pc).evaluate();
                 gPunto = evalGX.getNumberValue();
             }
             
-            pc=gPunto;
             Double doublepc = pc.doubleValue();
 
             Expression exp = new Expression(fx);
@@ -60,14 +54,12 @@ public class PuntoFijo {
             Double rc = resultaComprobado.doubleValue();
 
             System.out.println("Iteraciones: "+i);
-            System.out.println("La solución es %.6f"+doublepc);
-            System.out.println("Comprobando en la función f(x)");
-            System.out.println("%.6f"+rc);
+            System.out.println("La solución es "+doublepc);
+            System.out.println("Comprobando en la función f(x)"+rc);
 
         } catch (Exception e) {
             // TODO: handle exception
         }
 
     }
-
 }

@@ -41,7 +41,7 @@ public class Bolzano {
         if (fa.multiply(fb).compareTo(BigDecimal.ZERO) >= 0) {
             // código si el resultado es >= 0
             System.out.println("No se pudo comprobar a traves de Bolzano que exista una raiz en el intervalo");
-            System.out.println("NoTa: Puede que exista un cambio de signo en ese intervalo");
+            System.out.println("Nota: Puede que exista un cambio de signo en ese intervalo");
             System.out.println("Dando una solucion que no se encontro");
             System.out.println("Bolzano solo da una solucion por intervalo, sin considerar si existen otras soluciones");
 

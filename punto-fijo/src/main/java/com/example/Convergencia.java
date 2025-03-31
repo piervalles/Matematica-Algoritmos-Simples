@@ -14,6 +14,7 @@ public class Convergencia {
     private Datos datos;
     private BigDecimal puntoInicial;
 
+
     
 
     public Convergencia(Datos datos){
@@ -29,7 +30,7 @@ public class Convergencia {
         return derivada;
     }
 
-    private void convergencia1(){
+    public void puntoConvergencia(){
         String dgx = derivadaSimbolica();
         BigDecimal a = datos.getA();
         BigDecimal b = datos.getB();
@@ -45,6 +46,21 @@ public class Convergencia {
 
             EvaluationValue eDGB = expression.with("x", b).evaluate();
             dgB = eDGB.getNumberValue();
+
+            if (dgA.compareTo(BigDecimal.ONE) >= 0 && dgB.compareTo(BigDecimal.ONE) >= 0) {
+                System.out.println("El x=g(x) no cumple con el criterio de convergencia");
+                System.out.println(datos.getGx());
+                System.out.println("Ingrese x=g(x) expresado de otra manera");
+                System.exit(0); // Termina completamente el programa
+            }
+    
+            //Seleccionamos el punto inicial (A o B) basado en la condición de convergencia
+            //BigDecimal punto=null;
+            if (dgA.abs().compareTo(BigDecimal.ONE) < 0) {
+                puntoInicial = a;
+            } else if (dgB.abs().compareTo(BigDecimal.ONE) < 0) {
+                puntoInicial = b;
+            }
         } catch (Exception e) {
             // TODO: handle exception
         }
@@ -53,23 +69,10 @@ public class Convergencia {
         //Al menos uno de los dos puntos ó ambos deben cumplir con la
         //condición para salir del bucle
 
-        if (dgA.compareTo(BigDecimal.ONE) >= 0 && dgB.compareTo(BigDecimal.ONE) >= 0) {
-            System.out.println("El x=g(x) no cumple con el criterio de convergencia");
-            System.out.println(datos.getGx());
-            System.out.println("Ingrese x=g(x) expresado de otra manera");
-            System.exit(0); // Termina completamente el programa
-        }
 
-        //Seleccionamos el punto inicial (A o B) basado en la condición de convergencia
-        //BigDecimal punto=null;
-        if (dgA.abs().compareTo(BigDecimal.ONE) < 0) {
-            puntoInicial = a;
-        } else if (dgB.abs().compareTo(BigDecimal.ONE) < 0) {
-            puntoInicial = b;
-        }
     }
-
-    public BigDecimal getPuntoInicial(){
+    
+    public BigDecimal getPuntoConvergencia(){
         return puntoInicial;
     }
 
