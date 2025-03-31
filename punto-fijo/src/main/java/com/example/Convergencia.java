@@ -21,4 +21,8 @@ public class Convergencia {
         String derivada = util.eval("D(" + funcion + ", x)").toString();
         return derivada;
     }
+
+    public String getDerivadaSimbolica(){
+        return derivadaSimbolica();
+    }
 }

@@ -6,11 +6,16 @@ public class Main {
         datos.datosEntrada();
 
         Intervalos intervalos = new Intervalos(datos);
-        Bolzano bolzano = new Bolzano(datos);
         
         if(intervalos.reglaIntervalos()){
+            Bolzano bolzano = new Bolzano(datos);
             if (bolzano.bolzanoAplicaDecicion()) {
+
+                Convergencia derivada = new Convergencia(datos);
                 PuntoFijo puntoFijo = new PuntoFijo(datos);
+
+                String datoDerivada = derivada.getDerivadaSimbolica();
+                puntoFijo.recibirDerivada(datoDerivada);
             }
         }
         
