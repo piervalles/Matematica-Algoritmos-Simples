@@ -1,0 +1,48 @@
+package com.example;
+
+import java.math.BigDecimal;
+
+import org.matheclipse.core.eval.ExprEvaluator;
+import com.ezylang.evalex.Expression;
+import com.ezylang.evalex.data.EvaluationValue;
+
+
+
+public class Convergencia {
+
+    private Datos datos;
+    private String  derivada;
+
+    public Convergencia(Datos datos){
+        this.datos = datos;
+    }
+
+    public String derivadaSimbolica(){
+        // Obtenemos la función desde los datos
+        String funcion = datos.getGx();
+        
+
+        // Usamos Symja para realizar la derivada
+        ExprEvaluator util = new ExprEvaluator();
+        String derivada = util.eval("D(" + funcion + ", x)").toString();
+        return derivada;
+    }
+
+    public String getDerivadaSimbolica(){
+        this.derivada=derivadaSimbolica();
+        return derivada;
+    }
+
+    public void desarrollo(){
+        BigDecimal x = datos.getX();
+        try {
+            Expression expression = new Expression(getDerivadaSimbolica());
+            EvaluationValue result = expression.with("x", x).evaluate();
+            Double r = result.getNumberValue().doubleValue();
+            
+            System.out.println("resulatado  =  "+r);
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+    }
+}
