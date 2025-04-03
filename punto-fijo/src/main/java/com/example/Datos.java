@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 public class Datos {
     private String fx;
     private String gx;
+    private String d1gx;
     private BigDecimal a;
     private BigDecimal b;
 
@@ -19,6 +20,8 @@ public class Datos {
         this.fx = leerFuncion(escaner, "Ingrese la función f(x): ");
         // Validación de la función g(x)
         this.gx = leerFuncion(escaner, "Transforme f(x) en una forma equivalente a x = g(x): ");
+        //derivada de la función
+        this.d1gx = leerFuncion(escaner,"Ingrese la derivada");
         
         System.out.println("Ingrese el intervalo [a, b] para encontrar una solución:");
         
@@ -60,4 +63,5 @@ public class Datos {
     public String getGx() {return gx;}
     public BigDecimal getA() {return a;}
     public BigDecimal getB() {return b;}
+    public String getD1String() {return d1gx;}
 }

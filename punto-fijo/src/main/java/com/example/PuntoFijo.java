@@ -47,15 +47,16 @@ public class PuntoFijo {
             Double doublepc = pc.doubleValue();
 
             Expression exp = new Expression(fx);
-
+            
             EvaluationValue result = exp.with("x", pc).evaluate();
-            BigDecimal resultaComprobado = result.getNumberValue();
-
-            Double rc = resultaComprobado.doubleValue();
-
-            System.out.println("Iteraciones: "+i);
-            System.out.println("La solución es "+doublepc);
-            System.out.println("Comprobando en la función f(x)"+rc);
+            double resultaComprobado = result.getNumberValue().doubleValue();
+            
+            System.out.println("Iteraciones: " + i);
+            
+            // Utilizamos String.format para evitar la notación científica
+            System.out.println("La solución es " + String.format("%.6f", doublepc));
+            System.out.println("Comprobando en la función f(x) es: " + String.format("%.6f", resultaComprobado));
+            
 
         } catch (Exception e) {
             // TODO: handle exception

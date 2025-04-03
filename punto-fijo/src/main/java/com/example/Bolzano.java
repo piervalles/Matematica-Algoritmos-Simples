@@ -48,7 +48,6 @@ public class Bolzano {
             return false;
         } else {
             return true;
-        }
-        
+        } 
     }
 }
