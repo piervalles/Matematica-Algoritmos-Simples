@@ -14,8 +14,8 @@ public class Intervalos {
         Double fb=null;
 
         String fxString = datos.getFx();
-        double a = datos.getA().doubleValue();
-        double b = datos.getB().doubleValue();
+        double a = datos.getA();
+        double b = datos.getB();
 
         try {
             Expression expression = new Expression(fxString);
@@ -26,7 +26,13 @@ public class Intervalos {
             EvaluationValue eFb = expression.with("x", b).evaluate();
             fb = eFb.getNumberValue().doubleValue();   
         } catch (Exception e) {
-            // TODO: handle exception
+            System.out.println("Error al evaluar la función: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        if (fa == null || fb == null) {
+            System.out.println("Error al evaluar la función en los extremos del intervalo.");
+            return false;
         }
         
         if (a>=b || fa*fb==0) {

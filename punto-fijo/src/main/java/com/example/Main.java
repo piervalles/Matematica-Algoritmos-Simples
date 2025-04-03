@@ -1,7 +1,5 @@
 package com.example;
 
-import java.math.BigDecimal;
-
 public class Main {
     public static void main(String[] args) {
         ejecutar();
@@ -18,12 +16,10 @@ public class Main {
         
         if(intervalos.reglaIntervalos()==true){
             if (bolzano.bolzanoAplicaDecicion()==true) {
-
-                BigDecimal puntoInicial = convergencia.puntoInicial();
-                //puntoFijo.recibirPuntoConvergencia(puntoInicial);
-                //puntoFijo.puntoFijoDesarrollo();
-
+                double pnicial = convergencia.puntoInicial();
+                puntoFijo.recibirPuntoConvergencia(pnicial);
                 System.out.println("Este es el punto inicial "+convergencia.puntoInicial());
+                puntoFijo.puntoFijoDesarrollo();
             }
         }
     }

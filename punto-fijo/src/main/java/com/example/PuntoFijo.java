@@ -1,27 +1,23 @@
 package com.example;
 
-
 import com.ezylang.evalex.Expression;
 import com.ezylang.evalex.data.EvaluationValue;
-import java.math.BigDecimal;
-//import com.ezylang.evalex.EvaluationException;
-//import com.ezylang.evalex.parser.ParseException;
 
 public class PuntoFijo {
     private Datos datos;
-    private BigDecimal puntoConvergencia;
-    private BigDecimal gPunto;
+    private double puntoConvergencia;
+    private double gPunto;
 
-    public PuntoFijo(Datos datos){
+    public PuntoFijo(Datos datos) {
         this.datos = datos;
     }
 
-    public void recibirPuntoConvergencia(BigDecimal puntoConvergencia){
+    public void recibirPuntoConvergencia(double puntoConvergencia) {
         this.puntoConvergencia = puntoConvergencia;
     }
 
-    public void puntoFijoDesarrollo(){
-        BigDecimal  pc = puntoConvergencia;
+    public void puntoFijoDesarrollo() {
+        double pc = puntoConvergencia;
         String gx = datos.getGx();
         String fx = datos.getFx();
         int i = 0;
@@ -31,36 +27,32 @@ public class PuntoFijo {
             Expression expression = new Expression(gx);
 
             EvaluationValue evalGX = expression.with("x", pc).evaluate();
-            gPunto = evalGX.getNumberValue();
+            gPunto = evalGX.getNumberValue().doubleValue();
 
-            while (pc.subtract(gPunto).abs().compareTo(new BigDecimal("1e-20")) > 0) {
+            while (Math.abs(pc - gPunto) > 1e-20) {
                 i++;
-                if (i>imax) {
-                    System.out.println("Se alcanzo el numero maximo de iteracciones");
+                if (i > imax) {
+                    System.out.println("Se alcanzó el número máximo de iteraciones");
                     return;
                 }
                 pc = gPunto;
                 evalGX = expression.with("x", pc).evaluate();
-                gPunto = evalGX.getNumberValue();
+                gPunto = evalGX.getNumberValue().doubleValue();
             }
-            
-            Double doublepc = pc.doubleValue();
 
             Expression exp = new Expression(fx);
-            
             EvaluationValue result = exp.with("x", pc).evaluate();
             double resultaComprobado = result.getNumberValue().doubleValue();
-            
+
             System.out.println("Iteraciones: " + i);
-            
-            // Utilizamos String.format para evitar la notación científica
-            System.out.println("La solución es " + String.format("%.6f", doublepc));
-            System.out.println("Comprobando en la función f(x) es: " + String.format("%.6f", resultaComprobado));
-            
+
+            // Utilizamos System.out.printf de manera correcta
+            System.out.printf("La solución es: %.6f\n", pc);
+            System.out.printf("Comprobando en la función f(x) es: %.6f\n", resultaComprobado);
 
         } catch (Exception e) {
-            // TODO: handle exception
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
         }
-
     }
 }

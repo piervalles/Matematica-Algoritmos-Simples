@@ -1,6 +1,5 @@
 package com.example;
 
-import java.math.BigDecimal;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -8,8 +7,8 @@ public class Datos {
     private String fx;
     private String gx;
     private String d1gx;
-    private BigDecimal a;
-    private BigDecimal b;
+    private double a;
+    private double b;
 
     public void datosEntrada() {
         Scanner escaner = new Scanner(System.in);
@@ -24,20 +23,10 @@ public class Datos {
         this.d1gx = leerFuncion(escaner,"Ingrese la derivada");
         
         System.out.println("Ingrese el intervalo [a, b] para encontrar una solución:");
-        
-        try {
-            System.out.println("Ingrese 'a':");
-            String inputA = escaner.nextLine();
-            this.a = new BigDecimal(inputA);
-
-            System.out.println("Ingrese 'b':");
-            String inputB = escaner.nextLine();
-            this.b = new BigDecimal(inputB);
-
-        } catch (NumberFormatException e) {
-            System.out.println("Error: Formato no válido. Use punto para decimales (ej: 15.99)");
-        }
-        
+        System.out.println("ingrese \'a\'");
+        this.a = escaner.nextDouble();
+        System.out.println("ingrese \'b\'");
+        this.b = escaner.nextDouble();
         escaner.close();
     }
 
@@ -61,7 +50,7 @@ public class Datos {
 
     public String getFx() {return fx;}
     public String getGx() {return gx;}
-    public BigDecimal getA() {return a;}
-    public BigDecimal getB() {return b;}
+    public double getA() {return a;}
+    public double getB() {return b;}
     public String getD1String() {return d1gx;}
 }
