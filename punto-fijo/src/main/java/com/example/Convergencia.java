@@ -38,14 +38,19 @@ public class Convergencia {
 
         if (dgA >=1 && dgB>=1) {
             System.out.println("El x=g(x) no cumple con el criterio de convergencia");
+            return null;
         }
         
         //Seleccionamos el punto inicial (A o B) basado en la condición de convergencia
-        if (Math.abs(dgA)<1) {
-            return a;
-        } else{
-            return b;
-        }
+        if (Math.abs(dgA)<1 || Math.abs(dgB)<1) {
+            if (Math.abs(dgA)<1) {
+                return a;
+            } else {
+                return b;
+            }
+        } 
+
+        return null;
     }
 
     public Double puntoInicial(){
